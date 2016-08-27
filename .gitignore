@@ -45,3 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Target Folder created upon mvn build
+target
+
+# .project and .classpath files that gets created by eclipse
+.project
+.classpath
