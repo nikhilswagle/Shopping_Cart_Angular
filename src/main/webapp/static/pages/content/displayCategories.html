@@ -1,0 +1,22 @@
+<div id="categoryDiv" align="center" ng-controller="angular.shoppingcart.category.controller">
+	<table>
+		<tr>
+			<td><h4>Category</h4></td>
+			<td>
+				<select id="categorySelect" ng-model="categoryId">						
+						<option ng-repeat="category in categoryList" id="{{category.id}}" 
+									 label="{{category.name}}" 
+									 value="{{category.id}}"/>
+				</select>
+			</td>
+			<td><button value="GO" class="btn btn-primary" ng-click="showProducts()">GO</button></td>
+		</tr>
+	</table>
+</div>
+
+<div id="blankDiv" class="col-md-10">
+&nbsp;
+</div>
+
+<div ng-include="'/shopping-cart-angular/static/pages/content/showProducts.html'"></div>
+	

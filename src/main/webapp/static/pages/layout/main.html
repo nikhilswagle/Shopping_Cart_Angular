@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="shoppingCartApp">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+		<!-- Application specific CSS -->
+		<link href="http://localhost:8080/shopping-cart-angular/static/css/shopping-cart.css" rel="stylesheet"  type="text/css"/>
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		
+		<!-- Angular JS -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+		
+		<!-- Application specific java script file -->
+		<script type="text/javascript" src="http://localhost:8080/shopping-cart-angular/static/js/shopping-cart.js"></script>
+			
+		<title>{{pageTitle}}</title>
+	</head>
+	<body>
+		<div id="baseLayout">
+			<div class="container">
+				<div class="row">			
+					<div class="col-md-12">
+						<div ng-include="'/shopping-cart-angular/static/pages/sections/header.html'"></div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<div ng-include="'/shopping-cart-angular/static/pages/sections/navbar.html'"></div>
+					</div>
+				</div>				
+			
+				<div class="row">			
+					<div class="col-md-2">
+						<div ng-include="'/shopping-cart-angular/static/pages/sections/sidebar.html'"></div>
+					</div>
+					<div class="col-md-10">
+						<div ng-view></div>
+					</div>
+				</div>
+			
+				<div class="panel panel-default">
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-12">
+								<div ng-include="'/shopping-cart-angular/static/pages/sections/footer.html'"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

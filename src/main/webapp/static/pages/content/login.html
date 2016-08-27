@@ -1,0 +1,29 @@
+		
+<div align="center" ng-controller="angular.shoppingcart.login.controller">
+	<div class="row">
+		<div class="col-md-12">
+			{{message}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			Username: <input type="text" maxlength="20" ng-model="username"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			Password: <input type="password" maxlength="20" ng-model="password"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<button value="SUBMIT" class="btn btn-primary" ng-click="validateLogin()">SUBMIT</button>
+			<button value="RESET" class="btn btn-primary" ng-click="resetLogin()">RESET</button>
+		</div>
+	</div>
+</div>

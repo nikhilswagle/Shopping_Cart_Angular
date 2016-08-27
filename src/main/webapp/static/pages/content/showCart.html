@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div class="row">
+	<div class="col-md-9">
+	
+	</div>
+</div>
+<div class="row" ng-controller="angular.shoppingcart.cart.controller">
+	<div class="col-md-9">
+		<c:forEach items="${sessionScope.cart.items}" var="items" varStatus="row">
+			<div id="cartItem_${items.value.id}">
+				<div class="row">
+					<div class="col-md-4">
+					    <a href="/images/products/${items.value.id}/image.jpg" class="thumbnail"> 
+					      <img src="/images/products/${items.value.id}/image.jpg" alt="${items.value.name}" style="width:150px;height:150px">
+					    </a>
+					</div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-12">
+								UPC <label for="productId" class="label label-default">${items.value.id}</label>
+								<input type="hidden" id="productId" name="productId" value="${items.value.id}"
+									ng-value="productId[${items.value.id}]"/>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								Name <label for="productName" class="label label-primary">${items.value.name}</label>
+								<input type="hidden" id="productName" name="productName" value="${items.value.name}"
+									ng-value="productName[${items.value.id}]"/>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								Category <form:label for="productCategoryName" class="label label-info">${items.value.category.name}</label> 
+								<input type="hidden" id="productCategoryName" name="productCategoryName" value="${items.value.category.name}" />
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								Unit Price <form:label for="productUnitPrice" class="label label-info">${items.value.unitPrice}</label>
+								<input type="hidden" id="productUnitPrice" name="productUnitPrice" value="${items.value.unitPrice}" />
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								Left In Stock <form:label for="productInStockQty" class="badge">${items.value.inStockQty}</label>
+								<input type="hidden" id="productInStockQty" name="productInStockQty" value="${items.value.inStockQty}" />
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								Quantity <input id="productQtyOrdered" name="productQtyOrdered" type="number" 
+											min="1" max="${items.value.inStockQty}" value="${items.value.qtyOrdered}" 
+											ng-model="productQtyOrdered[${items.value.id}]"/>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								&nbsp;
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<button value="UPDATE" class="btn btn-primary" ng-click="updateCartItem(${items.value.id})">UPDATE</button>
+								&nbsp;
+								<button value="REMOVE" class="btn btn-primary" ng-click="removeCartItem(${items.value.id})">REMOVE</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					&nbsp;
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+	<div class="col-md-3">
+		<div class="row">
+			<div class="col-md-12">
+				<button type="submit" value="CHECKOUT" class="btn btn-primary">CHECKOUT</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				&nbsp;
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<a href="/shopping-cart/displayCategories.htm">
+					<button type="submit" value="CONTINUE SHOPPING" class="btn btn-primary">CONTINUE SHOPPING</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
