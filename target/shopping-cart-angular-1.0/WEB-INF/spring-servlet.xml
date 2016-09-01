@@ -24,8 +24,8 @@
     <!-- Scans the classpath for annotated components that will be auto-registered as Spring beans.
  	For example @Controller and @Service. Make sure to set the correct base-package-->
     <context:component-scan base-package="com.jlearning.shopping.controller" />
-    <context:component-scan base-package="com.jlearning.shopping.action.impl" />
-  	<context:component-scan base-package="com.jlearning.shopping.dao.impl" />
+    <context:component-scan base-package="com.jlearning.shopping.action" />
+  	<context:component-scan base-package="com.jlearning.shopping.dao" />
  
  	<!-- General View Resolver maps the string returned by the controller to appropriate view file. -->
     <bean id="jspViewResolver"
@@ -59,45 +59,10 @@
     <!-- Datasource Configuration -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	    <property name="url" value="jdbc:mysql://localhost:3306/shopping_cart" />
+	    <!-- <property name="url" value="jdbc:mysql://localhost:3306/shopping_cart" /> -->
+	    <property name="url" value="jdbc:mysql://aat7t3f405bn4d.cwztk3jhgnwr.us-west-2.rds.amazonaws.com:3306/shopping_cart" />
 	    <property name="username" value="shoppingcartuser" />
 	    <property name="password" value="shoppingcart123" />
-	</bean>
-	
-	<!-- Cassandra Datasource Configuration -->
-    <bean id="cassandraCluster" class="com.jlearning.shopping.cassandra.CassandraCluster">
-    	<constructor-arg>
-    		<value>Test Cluster</value>
-    	</constructor-arg>
-	    <constructor-arg>
-	    	<list value-type="java.net.InetSocketAddress">	    		
-	    		<ref bean="inetHost1"/>
-	    	</list>
-	    </constructor-arg>
-	    <constructor-arg ref="configuration"/>	    
-	</bean> 
-	
-	<bean id="inetHost1" class="java.net.InetSocketAddress">
-		<constructor-arg type="java.lang.String" value="127.0.0.1" />
-		<constructor-arg value="9042" />
-	</bean>
-	
-	<bean id="configuration" class="com.jlearning.shopping.cassandra.CassandraConfig">
-		<constructor-arg ref="policies"/>
-		<constructor-arg ref="poolingOptions"/>
-	</bean>
-	
-	<bean id="policies" class="com.jlearning.shopping.cassandra.CassandraPolicies">
-		<constructor-arg ref="lbPolicy"/>
-	</bean>
-	<bean id="lbPolicy" class="com.datastax.driver.core.policies.Policies" factory-method="defaultLoadBalancingPolicy"/>
-	
-	<bean id="poolingOptions" class="com.jlearning.shopping.cassandra.CassandraPoolingOptions">
-		<constructor-arg name="coreConnectionsPerLocalHost" value="4"/>
-		<constructor-arg name="maxConnectionsPerLocalHost" value="10"/>
-		<constructor-arg name="coreConnectionsPerRemoteHost" value="2"/>
-		<constructor-arg name="maxConnectionsPerRemoteHost" value="5"/>
-		<constructor-arg name="heartbeatIntervalSeconds" value="60"/>
 	</bean>
 	
 	<!-- Bind your shopping-cart-messages.properties -->

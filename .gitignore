@@ -47,10 +47,9 @@ Temporary Items
 .apdisk
 
 # Target Folder created upon mvn build
-target/
-.class
+target/*.*
+*.class
 
 # .project and .classpath files that gets created by eclipse
 .project
 .classpath
-*.class
