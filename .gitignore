@@ -53,3 +53,4 @@ target/
 # .project and .classpath files that gets created by eclipse
 .project
 .classpath
+*.class
